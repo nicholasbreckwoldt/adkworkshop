@@ -83,7 +83,7 @@ func main() {
 
 	// Create new agent
     adkAgent, err := llmagent.New(llmagent.Config{
-        Name:        "timeAgent",
+        Name:        "toolAgent",
         Model:       model,
         Description: "Assists with user queries",
         Instruction: "You are a helpful assistant that can assist users with their queries",
