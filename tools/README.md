@@ -1,4 +1,4 @@
-# Basic ADK Agent
+# Basic ADK Agent with Tools
 
 This application demonstrates an ADK agent that can invoke tools.
 
