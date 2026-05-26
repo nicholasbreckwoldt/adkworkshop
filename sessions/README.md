@@ -29,9 +29,8 @@ Run the following script:
 cd ./agentengine && go run main.go
 ```
 
-Then grab the reasoning engine and set the following envs:
+Then grab the reasoning engine and set the following envs (assumes in same Google Cloud location):
 ```bash
-export AGENT_ENGINE_LOCATION="YOUR LOCATION"
 export AGENT_ENGINE_ID="YOUR AGENT ENGINE ID"
 ```
 

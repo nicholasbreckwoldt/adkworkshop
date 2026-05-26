@@ -1,6 +1,7 @@
 package main
 
 import (
+    "fmt"
 	"context"
 	"log"
 	"os"
@@ -14,6 +15,7 @@ import (
 	"google.golang.org/adk/cmd/launcher/web/api"
 	"google.golang.org/adk/model/gemini"
 	"google.golang.org/genai"
+    "google.golang.org/api/option"
     "google.golang.org/adk/session/vertexai"
     "time"
 )
@@ -30,11 +32,8 @@ func init() {
 	// if os.Getenv("GEMINI_API_KEY") == "" {
 	// 	log.Fatalf("GEMINI_API_KEY env not set")
 	// }
-
-    if os.Getenv("AGENT_ENGINE_LOCATION") == "" {
-        log.Fatalf("AGENT_ENGINE_LOCATION env not set")
-    }
-     if os.Getenv("AGENT_ENGINE_ID") == "" {
+    
+    if os.Getenv("AGENT_ENGINE_ID") == "" {
         log.Fatalf("AGENT_ENGINE_ID env not set")
     }
 }
@@ -79,9 +78,10 @@ func main() {
     // Initialise Vertex AI Engine Session Service
     sessionService, err := vertexai.NewSessionService(ctx, vertexai.VertexAIServiceConfig{
     	ProjectID: os.Getenv("GOOGLE_CLOUD_PROJECT"),
-    	Location:  os.Getenv("AGENT_ENGINE_LOCATION"),
+    	Location:  os.Getenv("GOOGLE_CLOUD_LOCATION"),
         ReasoningEngine: os.Getenv("AGENT_ENGINE_ID"),
-    })
+    }, option.WithEndpoint(fmt.Sprintf("%s-aiplatform.googleapis.com:443", os.Getenv("GOOGLE_CLOUD_LOCATION"))),
+    )
     if err != nil {
         log.Fatalf("Failed to create session service")
     }
