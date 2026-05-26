@@ -45,7 +45,7 @@ curl -X GET http://localhost:8080/api/list-apps
 
 #### Step 2: List available sessions:
 ```bash
-curl -X POST http://localhost:8080/api/apps/toolAgent/users/user/sessions
+curl -X GET http://localhost:8080/api/apps/toolAgent/users/user/sessions
 ```
 
 #### Step 3: Get the current session:
